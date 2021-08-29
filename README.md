@@ -1,24 +1,11 @@
-# learningvue
+# upLexis Teste Técnico
 
-## Project setup
+## Primeiramente, é necessário instalar as dependências utilizadas no projeto:
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+yarn install || npm install
 ```
 
-### Compiles and minifies for production
+### Após instalar as dependências, para iniciar o projeto basta utilizar o comando:
 ```
-yarn build
+yarn serve || npm run serve
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
