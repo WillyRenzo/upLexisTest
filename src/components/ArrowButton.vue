@@ -10,7 +10,7 @@
 <script>
 export default {
   name: "ArrowButton",
-  props: { arrowType: String }
+  props: { arrowType: String },
 };
 </script>
 
@@ -25,22 +25,14 @@ export default {
 
 
 @media (max-width: 481px) {
-  .card {
-    flex-direction: column;
-    width: 70vw;
+  .btn {
+    width: 100%;
   }
 }
 
 @media (max-width: 1201px) and (min-width: 480px) {
   .card {
     width: 50%;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-  .btn {
-    display: none;
   }
 }
 

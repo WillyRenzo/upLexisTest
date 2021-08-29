@@ -19,6 +19,8 @@ export default {
 
 <style scoped>
 .card {
+  min-width: 30vw;
+  min-height: 40vh;
   background-color: white;
   border-radius: 5px;
   display: flex;
@@ -26,16 +28,16 @@ export default {
   justify-content: center;
   width: 40vw;
   height: 40%;
-  padding: 10px;
+  padding: 1px;
   -webkit-box-shadow: -1px -1px 13px 1px rgba(125, 125, 125, 0.75);
   box-shadow: -1px -1px 13px 1px rgba(125, 125, 125, 0.75);
-  margin: 1rem 5rem 1rem;
+  margin: 1rem 4rem 1rem;
 }
 
 .card-content .carrousel_item_img {
   width: 95%;
   padding: 1rem 1rem 1rem;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .card-content {
@@ -57,7 +59,7 @@ export default {
 
 @media (max-width: 1201px) and (min-width: 480px) {
   .card {
-    width: 50%;
+    width: 30vw;
   }
 }
 </style>

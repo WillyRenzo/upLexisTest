@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderSec />
+    <Header />
 
     <div class="backArea" @click="sendToHome()">
       <p class="backArea_title">&lt; {{ title }}</p>
@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import HeaderSec from "../components/HeaderSec.vue";
+import Header from "../components/Header.vue";
 import Carousel from "../components/Carousel.vue";
 
 export default {
   components: {
-    HeaderSec,
+    Header,
     Carousel,
   },
   data() {
@@ -39,16 +39,19 @@ export default {
       cards: [
         {
           text:
-            "By using the CachingAPI all static elements on an app can be pre-cached",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id?",
         },
         {
           text:
-            "User inputs entered when offline are sent in the background once they get connectivity.",
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum voluptate distinctio, recusandae fuga eaque unde perspiciatis corrupti nemo. Sint, accusamus.",
         },
         {
           text:
-            "The Notifications API lets us send push notifications to re-engage users.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate hic suscipit esse, quod minima voluptas vitae nihil modi pariatur et, incidunt odio dolore nisi doloremque adipisci saepe ducimus tempore quis.",
         },
+        {
+          text: "Lorem ipsum dolor sit amet."
+        }
       ],
     };
   },
@@ -111,12 +114,20 @@ export default {
 }
 
 @media (max-width: 481px) {
+  .descriptionArea {
+    margin-left: 3rem;
+  }
+
+  .backArea {
+    margin-left: 3rem;
+  }
+
   .backArea_title {
     width: 60vw;
   }
 
   .descriptionArea_text {
-    width: 60vw;
+    width: 80vw;
   }
 }
 

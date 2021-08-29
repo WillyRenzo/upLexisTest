@@ -55,12 +55,12 @@ export default {
   },
   methods: {
     showNextElement() {
-      this.currentElementIndex++;
-      this.secondCurrentElementIndex++;
+      this.currentElementIndex+= 2;
+      this.secondCurrentElementIndex+= 2;
     },
     showPrevElement() {
-      this.currentElementIndex--;
-      this.secondCurrentElementIndex--;
+      this.currentElementIndex-= 2;
+      this.secondCurrentElementIndex-= 2;
     },
     showElement(elementIndex) {
       this.currentElementIndex = elementIndex;
@@ -76,14 +76,6 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-}
-
-.btn {
-  height: 90px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  opacity: 0.5;
 }
 
 .carrousel_container {
@@ -102,29 +94,9 @@ export default {
   color: #797979;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-  .btn {
-    display: none;
+@media (max-width: 480px) {
+  .card-carousel {
+    flex-direction: column;
   }
 }
-
-.btn:focus {
-  outline: none;
-}
-
-.btn:hover {
-  opacity: 0.7;
-}
-
-.btn:disabled {
-  opacity: 0.2;
-  cursor: default;
-}
-
-.icon {
-  height: 90px;
-  width: auto;
-}
-
 </style>
