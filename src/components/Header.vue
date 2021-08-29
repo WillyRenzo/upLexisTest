@@ -27,6 +27,46 @@ export default {
     text: String,
     price: Number,
   },
+  data() {
+    return {
+      images: [
+        "../assets/images/headerprincipal.jpg",
+        "../assets/images/headersecundario.jpg",
+      ],
+      timer: null,
+      currentIndex: 0,
+    };
+  },
+  mounted: function() {
+    this.startSlide();
+  },
+
+  methods: {
+    startSlide: function() {
+      this.timer = setInterval(this.next, 4000);
+    },
+
+    next: function() {
+      this.currentIndex += 1;
+    },
+    prev: function() {
+      this.currentIndex -= 1;
+    },
+  },
+
+  computed: {
+    currentImg: function() {
+      return this.images[Math.abs(this.currentIndex) % this.images.length];
+    },
+    bgImage() {
+      return require("@/assets/images/" + this.backgroundImage);
+    },
+    inlineStyle() {
+      return {
+        backgroundImage: `url(${this.bgImage})`,
+      };
+    },
+  },
 };
 </script>
 
@@ -110,27 +150,32 @@ section {
   cursor: pointer;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 481px) {
   section {
-    height: 46vh;
+    height: 52vh;
   }
 
   .header {
-    height: 45vh;
+    height: 51vh;
+  }
+
+  .header_logoArea {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .header_logoArea_product {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    width: 60vw;
+  }
+  
+  .header_subtitleArea {
+    width: 50vw;
   }
 }
 
-@media (min-width: 480px) {
-  section {
-    height: 41vh;
-  }
-
-  .header {
-    height: 40vh;
-  }
-}
-
-@media (min-width: 800px) {
+@media (max-width: 1201px) and (min-width: 480px){
   section {
     height: 36vh;
   }
@@ -138,15 +183,9 @@ section {
   .header {
     height: 35vh;
   }
-}
 
-@media (min-width: 1200px) {
-  section {
-    height: 32vh;
-  }
-
-  .header {
-    height: 31vh;
+  .header_logoArea {
+    margin-top: 2rem;
   }
 }
 </style>

@@ -4,27 +4,37 @@
       <span>Ordenar</span>
       <select name="select" @change="onChange($event)" id="order">
         <option value="lancamento">Lançamento</option>
-        <option value="price">Preço</option>
+        <option value="minorPrice">Menor Preço</option>
+        <option value="maxPrice">Maior Preço</option>
       </select>
     </div>
     <div class="list">
-      <div class="list_item" v-for="( { id, icon, title, text, price, date}) in list" :key="id">
+      <div
+        class="list_item"
+        v-for="{ id, icon, title, text, price, date } in list"
+        :key="id"
+      >
         <div class="list_item_description">
-          <font-awesome-icon
-            :icon="icon"
-            class="list_item_icon"
-          />
+          <font-awesome-icon :icon="icon" class="list_item_icon" />
           <span class="list_item_title" ref="list_item_title">{{ title }}</span>
           <p class="list_item_text">
             {{ text }}
           </p>
           <p class="list_item_date">
-              {{ date }}
+            {{ date }}
           </p>
         </div>
         <div class="list_item_actions">
-          <span class="value">R${{ price ? price : 0}}</span>
-          <button class="btn_learnMore" @click="showDetails(title, text, price)" :title="title" :text="text" :price="price">Saiba Mais</button>
+          <span class="value">R${{ price ? price : 0 }}</span>
+          <button
+            class="btn_learnMore"
+            @click="showDetails(title, text, price)"
+            :title="title"
+            :text="text"
+            :price="price"
+          >
+            Saiba Mais
+          </button>
         </div>
       </div>
     </div>
@@ -32,100 +42,114 @@
 </template>
 
 <script>
-import sortBy from 'sort-by';
+import sortBy from "sort-by";
 
 export default {
   data() {
     return {
-        list: [
-            {
-                id: "1",
-                icon: "suitcase",
-                title: "Profissional",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 29.99,
-                date: '30/01/2000'
-            },
-            {
-                id: "2",
-                icon: "university",
-                title: "Reguladores",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 19.99,
-                date: '21/01/2000'
-            },
-            {
-                id: "3",
-                icon: "tree",
-                title: "Sócio Ambiental",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 1.99,
-                date: '22/01/2000'
-            },
-            {
-                id: "4",
-                icon: "gavel",
-                title: "Jurídico",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 2.99,
-                date: '23/01/2000'
-            },
-            {
-                id: "5",
-                icon: "ban",
-                title: "Listas Restritivas",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 100,
-                date: '24/01/2000'
-            },
-            {
-                id: "6",
-                icon: "globe-americas",
-                title: "Mídia/Internet",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 100,
-                date: '25/01/2000'
-            },
-            {
-                id: "7",
-                icon: "gem",
-                title: "Bens e Imóveis",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 100,
-                date: '26/01/2000'
-            },
-            {
-                id: "8",
-                icon: "male",
-                title: "Cadastro",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 100,
-                date: '27/01/2000'
-            },
-            {
-                id: "9",
-                icon: "piggy-bank",
-                title: "Financeiro",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
-                price: 100,
-                date: '28/01/2000'
-            }
-        ]
+      list: [
+        {
+          id: "1",
+          icon: "suitcase",
+          title: "Profissional",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 29.99,
+          date: "30/01/2000",
+        },
+        {
+          id: "2",
+          icon: "university",
+          title: "Reguladores",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 19.99,
+          date: "21/01/2000",
+        },
+        {
+          id: "3",
+          icon: "tree",
+          title: "Sócio Ambiental",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 1.99,
+          date: "22/01/2000",
+        },
+        {
+          id: "4",
+          icon: "gavel",
+          title: "Jurídico",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 2.99,
+          date: "23/01/2000",
+        },
+        {
+          id: "5",
+          icon: "ban",
+          title: "Listas Restritivas",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 129.99,
+          date: "24/01/2000",
+        },
+        {
+          id: "6",
+          icon: "globe-americas",
+          title: "Mídia/Internet",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 100.99,
+          date: "25/01/2000",
+        },
+        {
+          id: "7",
+          icon: "gem",
+          title: "Bens e Imóveis",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 299.99,
+          date: "26/01/2000",
+        },
+        {
+          id: "8",
+          icon: "male",
+          title: "Cadastro",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 5.99,
+          date: "27/01/2000",
+        },
+        {
+          id: "9",
+          icon: "piggy-bank",
+          title: "Financeiro",
+          text:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptate aliquid et facilis dolore suscipit perspiciatis amet, illum cupiditate voluptas.",
+          price: 120.99,
+          date: "28/01/2000",
+        },
+      ],
     };
   },
   methods: {
-      onChange(e) {
-          if (e.target.value === 'price') {
-              this.list.sort(sortBy('price'));
-          }
-          if (e.target.value === 'lancamento'){
-              this.list.sort(sortBy('date'));
-          }
-      },
-      showDetails(title, text, price) {
-          this.$router.push({ path: 'product', query: { title: title, text: text, price: price } });
-          console.log('alo');
+    onChange(e) {
+      if (e.target.value === "minorPrice") {
+        this.list.sort(sortBy("price"));
       }
+      if (e.target.value === "maxPrice") {
+        this.list.sort(sortBy("price")).reverse();
+      }
+      if (e.target.value === "lancamento") {
+        this.list.sort(sortBy("date"));
+      }
+    },
+    showDetails(title, text, price) {
+      this.$router.push({
+        path: "product",
+        query: { title: title, text: text, price: price },
+      });
+    },
   },
 };
 </script>
@@ -143,21 +167,26 @@ section {
 .orderArea {
   margin: 1%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin-left: 3rem;
+  margin-left: 5rem;
+  width: 100%;
 }
 
 .orderArea > span {
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Roboto Regular;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: Roboto Regular;
 }
 
 #order {
   margin-left: 1rem;
   width: 10vw;
   height: 2.5vh;
+}
+
+#order:active {
+  outline: none;
 }
 
 .list {
@@ -187,10 +216,10 @@ section {
 }
 
 .list_item .list_item_description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .list_item .list_item_icon {
@@ -200,14 +229,13 @@ section {
   margin-bottom: 1rem;
 }
 
-
 .list_item .list_item_title {
   font-family: Roboto Regular;
   font-size: 1.5rem;
 }
 
 .list_item .list_item_text {
-    margin: 1rem 2rem 0;
+  margin: 1rem 2rem 0;
   font-family: Roboto Medium;
   font-size: 1rem;
   color: #b0b0b0;
@@ -240,6 +268,42 @@ section {
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+@media (max-width: 481px) {
+  .list {
+    flex-direction: column;
+  }
+
+  .list_item {
+    width: 60vw;
+    height: 40vh;
+  }
+
+  .orderArea {
+    margin: 1.5rem 1rem 1.5rem;
+    margin-left: 3rem;
+  }
+
+  #order {
+    width: 35vw;
+    height: 2.5vh;
+  }
+}
+
+@media (max-width: 1201px) and (min-width: 480px) {
+  .list_item {
+    width: 30vw;
+  }
+
+  .orderArea {
+    margin: 1.5rem 1rem 1.5rem;
+    margin-left: 3rem;
+  }
+
+  #order {
+    width: 15vw;
+  }
 }
 </style>

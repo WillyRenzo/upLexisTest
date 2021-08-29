@@ -16,7 +16,8 @@
     "core-js": "^3.6.5",
     "sort-by": "^1.2.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.5.2"
+    "vue-router": "^3.5.2",
+    "vueperslides": "^2.15.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

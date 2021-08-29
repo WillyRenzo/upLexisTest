@@ -3,46 +3,60 @@
     <HeaderSec />
 
     <div class="backArea" @click="sendToHome()">
-        <p class="backArea_title">
-            &lt; {{ title }}
-        </p>
+      <p class="backArea_title">&lt; {{ title }}</p>
     </div>
 
-    <Carrousel />
+    <Carousel :cards="cards" />
 
     <div class="descriptionArea">
-        <p class="descriptionArea_text">{{ text }}</p>
-        <p class="descriptionArea_text">{{ text }}</p>
-        <p class="descriptionArea_text">{{ text }}</p>
-        <div class="descriptionArea_actions">
-            <p>R$ <span class="descriptionArea_price">{{ price }}</span></p>
-            <button class="btn_enable">Habilitar</button>
-        </div>
+      <p class="descriptionArea_text">{{ text }}</p>
+      <p class="descriptionArea_text">{{ text }}</p>
+      <p class="descriptionArea_text">{{ text }}</p>
+      <div class="descriptionArea_actions">
+        <p>
+          R$ <span class="descriptionArea_price">{{ price }}</span>
+        </p>
+        <button class="btn_enable">Habilitar</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import HeaderSec from "../components/HeaderSec.vue";
-import Carrousel from "../components/Carrousel.vue";
+import Carousel from "../components/Carousel.vue";
 
 export default {
   components: {
     HeaderSec,
-    Carrousel
+    Carousel,
   },
   data() {
     return {
       title: this.$route.query.title,
       text: this.$route.query.text,
       price: this.$route.query.price,
+      cards: [
+        {
+          text:
+            "By using the CachingAPI all static elements on an app can be pre-cached",
+        },
+        {
+          text:
+            "User inputs entered when offline are sent in the background once they get connectivity.",
+        },
+        {
+          text:
+            "The Notifications API lets us send push notifications to re-engage users.",
+        },
+      ],
     };
   },
   methods: {
-      sendToHome() {
-          this.$router.push('/')
-      }
-  }
+    sendToHome() {
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
@@ -52,33 +66,33 @@ export default {
 }
 
 .backArea {
-    margin: 1rem 10rem 1rem;
-    cursor: pointer;
+  margin: 1rem 10rem 1rem;
+  cursor: pointer;
 }
 
 .backArea_title {
-    font-family: Roboto Regular, sans-serif;
-    font-size: 2rem;
-    color: #f0690a;
+  font-family: Roboto Regular, sans-serif;
+  font-size: 2rem;
+  color: #f0690a;
 }
 
 .descriptionArea {
-    margin: 3rem 10rem 1rem;
+  margin: 3rem 10rem 1rem;
 }
 
 .descriptionArea_actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .descriptionArea_text {
-    color: #8f8f8f;
-    font-size: 1.1rem;
+  color: #8f8f8f;
+  font-size: 1.1rem;
 }
 
 .descriptionArea_price {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .btn_enable {
@@ -96,4 +110,19 @@ export default {
   cursor: pointer;
 }
 
+@media (max-width: 481px) {
+  .backArea_title {
+    width: 60vw;
+  }
+
+  .descriptionArea_text {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 1201px) and (min-width: 480px) {
+  .card {
+    width: 50vw;
+  }
+}
 </style>
